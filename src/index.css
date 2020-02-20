@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
+
+/*@font-face {*/
+/*  font-family: customFont;*/
+/*  src: url("./fonts/Asmaa-Font.otf");*/
+/*}*/
+
+body {
+  background-image: url("./img/bg.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*font-family: customFont, sans-serif;*/
+  font-family: 'Cairo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+a{
+  text-decoration: none;
+}
+
+a:hover {
+
+  text-decoration: none;
+}
+
+
+/*body:before{*/
+/*  background-image: linear-gradient(45deg ,#000 1%,#DE3163 30%, #fff);*/
+/*  background-attachment: fixed;*/
+/*  background-size: cover;*/
+/*  background-repeat: no-repeat;*/
+/*  content: '';*/
+/*  display: block;*/
+/*  height: inherit;*/
+/*  position: absolute;*/
+/*  width: 100%;*/
+/*  opacity:0.7;*/
+/*}*/
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

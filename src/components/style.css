@@ -1,0 +1,150 @@
+/******** Global ******/
+
+.box {
+    width: 38%;
+    border-radius: 2rem;
+    min-height: 85vh;
+    margin: 2rem 2rem  2rem auto;
+    background-color: rgba(255,255,255,0.9);
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+
+/******* Home Page *******/
+
+.logo {
+    width:30%;
+    margin: 1.5rem 0 .5rem;
+}
+
+.logo img {
+    text-align: center;
+    width: 100%;
+}
+
+
+
+.box .choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-width: 65%;
+}
+
+
+.choice .btn {
+    min-height: 3rem;
+    padding: 0.875rem 0;
+    border-radius: 10px;
+    margin:0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 200;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    background-color: #fff;
+    border : 1px solid #DE3163;
+    color: #DE3163;
+    box-shadow: 3px 3px 3px rgba(214, 125, 132, 0.4);
+}
+
+
+.choice .btn-custom:hover {
+    background-color: #DE3163;
+    color: #fff;
+    box-shadow: 3px 3px 6px rgba(0,0,0,.16);
+
+}
+
+.choice .btn-custom:focus {
+    outline: 0;
+    box-shadow: 3px 3px 6px rgba(0,0,0,.16);
+}
+
+
+
+
+.find {
+    font-size: 1.3rem;
+    margin: 1.5rem 0;
+    font-weight: 200;
+}
+
+.applications {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.app-icon img {
+    width: 30%;
+    margin: auto;
+}
+
+
+
+
+/*ForgetPassword*/
+.headText {
+   color: #DE3163;
+    margin: 2rem auto 3rem;
+}
+
+
+.box .passwordChoice {
+    margin-top: 6rem;
+}
+.box .btn-send {
+    margin-top: 1rem;
+    background-color: #DE3163;
+    color: #fff;
+}
+
+.box .btn-send:hover {
+    background-color: #fff;
+    color: #DE3163;
+}
+.box .email-filed {
+    min-height: 3rem;
+    padding: 0.875rem 0.5rem;
+    text-align: right;
+}
+
+.box .email-filed:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 1px 0.2rem #ff82a6;
+}
+
+
+.pass {
+    display: flex;
+    justify-content: flex-end;
+}
+/******  Footer Style *****/
+
+.mainFooter {
+    bottom: 0.5rem;
+    width: 100%;
+    margin: auto;
+    display: flex;
+}
+
+.mainFooter ul {
+    width: 35%;
+    margin-left: 9rem;
+    list-style: none;
+    justify-content: space-around;
+    display: flex;
+    color: #fff;
+    flex-direction: row-reverse;
+
+}
+
+.mainFooter .copyRight {
+    width: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #C5C5C5;
+}
