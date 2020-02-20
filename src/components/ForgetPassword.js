@@ -1,5 +1,4 @@
 import React  from 'react';
-import {Redirect} from "react-router-dom";
 
 
 class ForgetPassword extends React.Component{
@@ -53,7 +52,7 @@ class ForgetPassword extends React.Component{
                         <input type="email" placeholder="البريد الإلكتروني" className="email-filed form-control"
                                onChange={this.handleChange} value={this.state.email}
                         />
-                        <small style={{color: "red"}} className="pass">{this.state.error}</small>
+                        <small className="pass">{this.state.error}</small>
                         <button type="submit" className="btn btn-send"> إرسال  </button>
                     </form>
             </div>

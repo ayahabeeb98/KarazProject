@@ -55,41 +55,42 @@ class Login extends React.Component {
                     </div>
 
                     <div className="row apps mt-2">
-                        <div className='col-lg-6 d-flex justify-content-center'>
-                            <button className="facebook"><i className="fab fa-facebook-f mr-2"></i> Facebook</button>
+                        <div className='col-6 d-flex justify-content-center'>
+                            <button className="facebook"><i className="fab fa-facebook-f mr-2" /> Facebook</button>
                         </div>
-                        <div className='col-lg-6 d-flex justify-content-center'>
-                            <button className="google"><i className="fab fa-google mr-2"></i> Google</button>
+                        <div className='col-6 d-flex justify-content-center'>
+                            <button className="google"><i className="fab fa-google mr-2" /> Google</button>
                         </div>
                     </div>
 
-                    <div className='row'>
-                        <label className='or'>أو</label>
+                    <div className=''>
+                        <p className='or'>أو</p>
                     </div>
+
                     <form action="" onSubmit={this.handleSubmit}>
                         {/* Email */}
-                        <div className="row">
-                            <input className="email" placeholder="رقم الهاتف او البريد الالكتروني" name="email"
-                                   type="text"
+                        <div className="form-group">
+                            <input className="form-control email-filed" placeholder="رقم الهاتف او البريد الالكتروني"
+                                   name="email"  type="text"
                                    onChange={this.handleChange} value={this.state.email}/>
-                            <small style={{color: "red"}} className="ml-auto">{this.state.errors["email"]}</small>
+                            <small className="pass">{this.state.errors["email"]}</small>
                         </div>
 
                         {/* Password */}
-                        <div className="row">
-                            <input className="password" placeholder='كلمة المرور' name="password" type="password"
+                        <div className="form-group">
+                            <input className="form-control email-filed" placeholder='كلمة المرور' name="password" type="password"
                                    onChange={this.handleChange} value={this.state.password}/>
-                            <small style={{color: "red"}} className="ml-auto">{this.state.errors["password"]}</small>
+                            <small className="pass">{this.state.errors["password"]}</small>
 
                         </div>
 
 
-                        <div className="row d-flex justify-content-center groupForget">
-                            <div className="col-lg-6 forgetPassword">
+                        <div className="row w-100 d-flex justify-content-center mx-0">
+                            <div className="col-6 forgetPassword">
                                 <Link to="/login/recover" className="forgetPassword1">نسيت كلمة المرور؟</Link>
                             </div>
 
-                            <div className="col-lg-6 remember">
+                            <div className="col-6 remember">
                                 <div>
                                     <label className="remember1">تذكرني</label>
                                     <input type="checkbox" className="checkbox"/>
@@ -100,11 +101,11 @@ class Login extends React.Component {
                         </div>
                     </form>
 
-                    <div className="row">
-                        <div className="col-lg-12 createAccount">
+                    <div className="row mb-2">
+                        <div className="col-12 createAccount">
                             <small>ليس لديك حساب؟</small>
 
-                            <Link to="/signup">إنشاء حساب </Link>
+                            <Link to="/signup">  إنشاء حساب </Link>
                         </div>
 
                     </div>

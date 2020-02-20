@@ -71,7 +71,7 @@ class ResetPassword extends React.Component {
                         <input type="password" id="password" className="form-control email-filed"
                                placeholder="********" name="password"
                                value={password} onChange={this.handleChange}/>
-                        <small style={{color: "red"}} className="pass">{this.state.errors["password"]}</small>
+                        <small  className="pass">{this.state.errors["password"]}</small>
                     </div>
 
                     <div className="form-group">
@@ -79,7 +79,7 @@ class ResetPassword extends React.Component {
                         <input type="password" id="ConfirmPassword" className="form-control email-filed"
                                placeholder="********" name="confirmPassword"
                                value={confirmPassword} onChange={this.handleChange} />
-                        <small style={{color: "red"}} className="pass">{this.state.errors["confirmPassword"]}</small>
+                        <small  className="pass">{this.state.errors["confirmPassword"]}</small>
 
                     </div>
 

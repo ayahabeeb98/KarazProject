@@ -1,7 +1,7 @@
 /******** Global ******/
 
 .box {
-    width: 38%;
+    width: 40%;
     border-radius: 2rem;
     min-height: 85vh;
     margin: 2rem 2rem  2rem auto;
@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-items: center;
     align-items: center;
+    transition: all 5ms ease-in;
 }
 
 
@@ -100,7 +101,7 @@
 
 
 .facebook,.google{
-    width: 8rem;
+    width: 100%;
     height: 3rem;
     color: #fff;
     border: none;
@@ -118,7 +119,7 @@
 
 
 .or {
-    font-size: .2rem;
+    font-size: 0.4rem;
     margin-top: 1rem;
     color:gray;
 }
@@ -135,17 +136,6 @@
 
 }
 
-.name,.email,.password,.location{
-    width: 100%;
-    height: 3rem;
-    border-radius: .7rem;
-    border: 1px solid #dae0e5;
-    margin-top: 1rem;
-    font-size: .9rem;
-    text-align: right;
-    padding-right: 1rem;
-
-}
 
 .groupForget{
     margin-top: 1rem;
@@ -157,9 +147,12 @@
 }
 
 .remember1{
-    padding-right: .5rem;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+    vertical-align: middle;
     color: gray;
 }
+
 
 .checkbox{
     height: 25px;
@@ -168,7 +161,7 @@
 }
 
 .forgetPassword{
-    padding-left: 0px!important;
+    padding-left: 0!important;
 }
 
 .loginButton{
@@ -203,6 +196,7 @@
 .accept1{
     padding-right: .5rem;
     color: gray;
+    vertical-align: middle;
     font-size: .7rem;
 }
 
@@ -243,6 +237,8 @@
 
 .pass {
     display: flex;
+    color: red;
+    padding-right: 0.5rem;
     justify-content: flex-end;
 }
 /******  Footer Style *****/
@@ -271,3 +267,52 @@
     text-align: center;
     color: #C5C5C5;
 }
+
+.mainFooter .copyRight small{
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(106,119,117,0.7);
+}
+/******* Media Query ******/
+
+
+@media (max-width: 992px){
+    .box{
+        width: 55%;
+    }
+
+    .mainFooter ul {
+        margin-left: 2rem;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+    .mainFooter {
+        flex-direction: column-reverse;
+    }
+
+    .mainFooter .copyRight , .mainFooter ul {
+        width: 100%;
+    }
+
+    .mainFooter ul {
+        margin-left:0;
+    }
+
+    .box{
+        width: 70%;
+        margin: 2rem auto;
+
+        height: 100%;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+    .box {
+        width: 90%;
+    }
+}
+

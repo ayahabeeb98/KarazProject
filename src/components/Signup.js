@@ -40,7 +40,7 @@ class Signup extends React.Component {
 
         if(!email) {
             isValid= false;
-            errors["email"] = 'لم تدخل بريدك الإلكتروني بعد'
+            errors["email"] = 'الرجاء إدخال بريدك الإلكتروني'
         }else {
             if (!email.match(/[^\d][\w.]+@\w+(\.[A-Za-z]+){1,2}/g)){
                 isValid = false;
@@ -50,7 +50,7 @@ class Signup extends React.Component {
 
         if (!password) {
             isValid = false;
-            errors["password"] = "لم تدخل كلمة مرور بعد";
+            errors["password"] = "الرجاء إدخال كلمة مرور";
         }else {
             if(!password.match(/^(?=.*\d)(?=.*[a-z]).{8,}$/)){
                 isValid = false;
@@ -82,16 +82,16 @@ class Signup extends React.Component {
                     {/**** Third-party ****/}
 
                     <div className="row apps mt-2">
-                        <div className='col-lg-6 d-flex justify-content-center'>
+                        <div className='col-6 d-flex justify-content-center'>
                             <button className="facebook"><i className="fab fa-facebook-f mr-2" />  Facebook</button>
                         </div>
-                        <div className='col-lg-6 d-flex justify-content-center'>
+                        <div className='col-6 d-flex justify-content-center'>
                             <button className="google"><i className="fab fa-google mr-2" />  Google</button>
                         </div>
                     </div>
 
-                    <div className='row'>
-                        <label className='or'>أو</label>
+                    <div className=''>
+                        <p className='or'>أو</p>
                     </div>
 
 
@@ -99,34 +99,34 @@ class Signup extends React.Component {
 
                     <form action="" onSubmit={this.handleSubmit}>
                        {/* Name Field */}
-                        <div className="row">
-                            <input className="name" placeholder="الإسم كاملاً" name="name" type="text"
+                        <div className="form-group">
+                            <input className="form-control email-filed" placeholder="الإسم كاملاً" name="name" type="text"
                                    onChange={this.handleChange} value={this.state.name}/>
-                            <small style={{color: "red"}} className="ml-auto">{this.state.errors["name"]}</small>
+                            <small className="pass">{this.state.errors["name"]}</small>
 
                         </div>
 
                         {/*Phone or Email*/}
-                        <div className="row">
-                            <input className="email" placeholder="رقم الهاتف او البريد الالكتروني" name="email" type="text"
+                        <div className="form-group">
+                            <input className="form-control email-filed" placeholder="رقم الهاتف او البريد الالكتروني" name="email" type="text"
                                    onChange={this.handleChange} value={this.state.email}/>
-                            <small style={{color: "red"}} className="ml-auto">{this.state.errors["email"]}</small>
+                            <small  className="pass">{this.state.errors["email"]}</small>
                         </div>
 
                         {/* Password */}
-                        <div className="row">
-                            <input className="password" placeholder='كلمة المرور' name="password" type="password"
+                        <div className="form-group">
+                            <input className="form-control email-filed" placeholder='كلمة المرور' name="password" type="password"
                                    onChange={this.handleChange} value={this.state.password}/>
-                            <small style={{color: "red"}} className="ml-auto">{this.state.errors["password"]}</small>
+                            <small className="pass">{this.state.errors["password"]}</small>
 
                         </div>
 
 
-                        <div className="row">
-                            <input className="location" placeholder="المكان "/>
+                        <div className="form-group">
+                            <input className="form-control email-filed" placeholder="المكان "/>
                         </div>
 
-                        <div className="row d-flex justify-content-center groupForget">
+                        <div className="row d-flex justify-content-center mx-0 w-100">
                             <div className="col-lg-12 accept">
                                 <div >
                                     <label className="accept1">أوافق على شروط الخدمة والخصوصية</label>
@@ -137,7 +137,7 @@ class Signup extends React.Component {
                         </div>
                     </form>
 
-                    <div className="row mb-2">
+                    <div className="row mb-3">
                         <div className="col-lg-12 createAccount">
                             <Link to="/login"> تسجيل الدخول </Link>
                             <label> لديك حساب؟ </label>
