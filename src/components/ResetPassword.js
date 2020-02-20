@@ -21,7 +21,7 @@ class ResetPassword extends React.Component {
             isValid = false;
             errors["password"] = "لم تدخل كلمة مرور بعد";
         }else {
-            if(!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)){
+            if(!password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)){
                 isValid = false;
                 errors["password"] = ".كلمة المرور التي اخترتها ضعيفة ";
             }
@@ -32,10 +32,12 @@ class ResetPassword extends React.Component {
             isValid = false;
             errors["confirmPassword"] = "لم تدخل كلمة مرور بعد";
         }else {
-            if(!password === confirmPass){
+            if(password !== confirmPass){
+                isValid = false;
                 errors["confirmPassword"] = "كلمتا المرور غير متطابقتين";
             }
         }
+
         this.setState({errors: errors});
         return isValid;
     };

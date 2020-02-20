@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import Footer from "./components/footer";
 import ForgetPassword from "./components/ForgetPassword";
 import ResetPassword from "./components/ResetPassword";
+import ConfirmEmail from "./components/ConfirmEmail";
 
 function App()  {
       return (
@@ -17,7 +18,8 @@ function App()  {
                       <Route path="/login" exact component={Login}/>
                       <Route path="/signup" component={Signup}/>
                       <Route path="/login/recover" exact component={ForgetPassword}/>
-                      <Route path="/login/recover/token"  component={ResetPassword}/>
+                      <Route path="/login/recover/token"  component={ConfirmEmail}/>
+                      <Route path="/login/reset"  component={ResetPassword}/>
                   </Switch>
               </Router>
               <Footer/>
