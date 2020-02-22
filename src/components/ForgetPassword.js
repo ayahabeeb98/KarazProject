@@ -1,5 +1,5 @@
 import React  from 'react';
-
+import axios from 'axios';
 
 class ForgetPassword extends React.Component{
     // const [email , setEmail] = useState('');
@@ -7,10 +7,13 @@ class ForgetPassword extends React.Component{
         super(props);
         this.state = {
             email: '',
-            error : ''
+            error : '',
+            valid : '',
+            errors: {}
         };
     }
 
+    //check if the email field is not empty and correct
     validateEmail = () => {
         let email = this.state.email;
         let error = '';
@@ -32,10 +35,36 @@ class ForgetPassword extends React.Component{
 
     submitForm = (e) =>{
         e.preventDefault();
-        if(this.validateEmail()) {
-            this.props.history.push('/login/recover/token');
-        }
+        const { email } = this.state;
+        const user = { email };
+        let errors = {};
 
+        const headers = {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        };
+
+        //if the validate success
+        if (this.validateEmail()){
+            axios.post('https://karaz12.herokuapp.com/forgetpass/sendCode',JSON.stringify(user), {headers:headers})
+                .then(Response => {
+                    if (Response.status === 200) {
+                        this.setState({valid : Response.data});
+                        this.props.history.push({
+                            pathname: '/login/recover/token',
+                            state: { userEmail: JSON.stringify(user)}
+                        });
+                    } else {
+                        throw new Error('Something went wrong ...');
+                    }
+                })
+                .catch(error => {
+                    if (error.name === "Error") {
+                        errors["serverError"] = "هذا البريد غير مسجل لأي حساب لدينا";
+                        this.setState(this.setState({errors: errors}));
+                    }
+                });
+        }
     };
 
     handleChange = (e) => {
@@ -47,14 +76,16 @@ class ForgetPassword extends React.Component{
     render() {
         return (
             <div className="box">
-                <h3 className="headText">إسترجاع كلمة المرور</h3>
-                    <form action="" className="choice passwordChoice" onSubmit={this.submitForm}>
-                        <input type="email" placeholder="البريد الإلكتروني" className="email-filed form-control"
-                               onChange={this.handleChange} value={this.state.email}
-                        />
-                        <small className="pass">{this.state.error}</small>
-                        <button type="submit" className="btn btn-send"> إرسال  </button>
-                    </form>
+                <h3 className="headText">البحث عن حسابك</h3>
+                <p className="pass">{this.state.errors["serverError"]}</p>
+                <form action="" className="choice passwordChoice" onSubmit={this.submitForm}>
+                    <p className="text-right"> أدخل بريدك الإلكتروني للعثور على حسابك </p>
+                    <input type="email" placeholder="البريد الإلكتروني" className="email-filed form-control"
+                           onChange={this.handleChange} value={this.state.email}
+                    />
+                    <small className="pass">{this.state.error}</small>
+                    <button type="submit" className="btn btn-send"> إرسال  </button>
+                </form>
             </div>
         )
     }

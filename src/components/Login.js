@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends React.Component {
     constructor(props) {
@@ -40,10 +41,43 @@ class Login extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (this.validateForm()) {
-            this.props.history.push('/login');
+
+        const { email , password} = this.state;
+        const user = { email , password};
+        let errors = {};
+
+        const headers = {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        };
+
+        //if the validate success
+        if (this.validateForm()){
+            axios.post('https://karaz12.herokuapp.com/auth/login',JSON.stringify(user), {headers:headers})
+                .then(Response => {
+                    if (Response.status === 200) {
+                        this.setState({creditCards : Response.data.user});
+                        this.props.history.push('/profile');
+                    } else {
+                        throw new Error('Something went wrong ...');
+                    }
+                })
+                .catch(error => {
+                    if (error.name === "Error") {
+                        errors["serverError"] = "خطأ في البريد الإلكتروني أو كلمة المرور";
+                        this.setState(this.setState({errors: errors}));
+                    }
+                });
         }
     };
+
+    // handleGmailAuth = () => {
+    //     axios('https://karaz12.herokuapp.com/auth/google')
+    //         .then(result => {
+    //
+    //         })
+    //         .catch(error => console.log(error))
+    // };
 
     render() {
         return (
@@ -56,10 +90,12 @@ class Login extends React.Component {
 
                     <div className="row apps mt-2">
                         <div className='col-6 d-flex justify-content-center'>
-                            <button className="facebook"><i className="fab fa-facebook-f mr-2" /> Facebook</button>
+                            <button className="facebook"><a href="https://karaz12.herokuapp.com/auth/facebook" className="App-link">
+                                <i className="fab fa-facebook-f mr-2" /> Facebook</a></button>
                         </div>
                         <div className='col-6 d-flex justify-content-center'>
-                            <button className="google"><i className="fab fa-google mr-2" /> Google</button>
+                            <button className="google"><a href="https://karaz12.herokuapp.com/auth/google" className="App-link">
+                                <i className="fab fa-google mr-2" /> Google</a></button>
                         </div>
                     </div>
 
@@ -69,8 +105,9 @@ class Login extends React.Component {
 
                     <form action="" onSubmit={this.handleSubmit}>
                         {/* Email */}
+                        <p className="pass">{this.state.errors["serverError"]}</p>
                         <div className="form-group">
-                            <input className="form-control email-filed" placeholder="رقم الهاتف او البريد الالكتروني"
+                            <input className="form-control email-filed response" placeholder="رقم الهاتف او البريد الالكتروني"
                                    name="email"  type="text"
                                    onChange={this.handleChange} value={this.state.email}/>
                             <small className="pass">{this.state.errors["email"]}</small>
@@ -78,14 +115,14 @@ class Login extends React.Component {
 
                         {/* Password */}
                         <div className="form-group">
-                            <input className="form-control email-filed" placeholder='كلمة المرور' name="password" type="password"
+                            <input className="form-control email-filed response" placeholder='كلمة المرور' name="password" type="password"
                                    onChange={this.handleChange} value={this.state.password}/>
                             <small className="pass">{this.state.errors["password"]}</small>
 
                         </div>
 
 
-                        <div className="row w-100 d-flex justify-content-center mx-0">
+                        <div className="row w-100 d-flex justify-content-center mx-0 response">
                             <div className="col-6 forgetPassword">
                                 <Link to="/login/recover" className="forgetPassword1">نسيت كلمة المرور؟</Link>
                             </div>

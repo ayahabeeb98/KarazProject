@@ -1,4 +1,5 @@
 import React  from 'react';
+import axios from "axios";
 
 
 class ResetPassword extends React.Component {
@@ -6,7 +7,7 @@ class ResetPassword extends React.Component {
         super(props);
         this.state = {
             password: '',
-            confirmPassword : '',
+            passwordConfirm : '',
             errors : {}
         };
     }
@@ -15,13 +16,13 @@ class ResetPassword extends React.Component {
         let isValid = true;
         let errors = {};
         let password = this.state.password;
-        let confirmPass = this.state.confirmPassword;
+        let confirmPass = this.state.passwordConfirm;
 
         if (!password) {
             isValid = false;
             errors["password"] = "لم تدخل كلمة مرور بعد";
         }else {
-            if(!password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)){
+            if(!password.match(/^(?=.*\d)(?=.*[a-z]).{8,}$/)){
                 isValid = false;
                 errors["password"] = ".كلمة المرور التي اخترتها ضعيفة ";
             }
@@ -44,12 +45,32 @@ class ResetPassword extends React.Component {
 
     submitForm = (e) =>{
         e.preventDefault();
-        if(this.handleValidate()){
-            this.props.history.push('/');
-        }else{
-            console.log(this.state.errors["password"]);
-        }
+        const email = this.props.location.state.userEmail;
+        const {password , passwordConfirm,errors } = this.state;
 
+        const user = {email,password,passwordConfirm};
+        const headers = {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        };
+
+        if(this.handleValidate()){
+            axios.post('http://karaz12.herokuapp.com/forgetpass/changePassword',JSON.stringify(user), {headers:headers})
+                .then(Response => {
+                    if (Response.status === 200) {
+                        this.props.history.push('/profile');
+                    } else {
+                        throw new Error('Something went wrong ...');
+                    }
+                })
+                .catch(error => {
+                    if (error.name === "Error") {
+                        errors["serverError"] = "كلمتا المرور غير متطابقتين";
+                        this.setState(this.setState({errors: errors}));
+                    }
+                });
+
+        }
 
     };
 
@@ -64,9 +85,10 @@ class ResetPassword extends React.Component {
         return (
             <div className="box">
                 <h3 className="headText">إسترجاع كلمة المرور</h3>
+                <small  className="pass">{this.state.errors["serverError"]}</small>
                 <form action="" className="choice passwordChoice mt-3"  onSubmit={this.submitForm}>
                     <div className="form-group">
-                        <label htmlFor="password" className="pass">أدخل كلمة المرور الجديدة</label>
+                        <label htmlFor="password" className="RestPass">أدخل كلمة المرور الجديدة</label>
 
                         <input type="password" id="password" className="form-control email-filed"
                                placeholder="********" name="password"
@@ -75,9 +97,9 @@ class ResetPassword extends React.Component {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="ConfirmPassword" className="pass">أعد إدخال كلمة المرور </label>
+                        <label htmlFor="ConfirmPassword" className="RestPass">أعد إدخال كلمة المرور </label>
                         <input type="password" id="ConfirmPassword" className="form-control email-filed"
-                               placeholder="********" name="confirmPassword"
+                               placeholder="********" name="passwordConfirm"
                                value={confirmPassword} onChange={this.handleChange} />
                         <small  className="pass">{this.state.errors["confirmPassword"]}</small>
 

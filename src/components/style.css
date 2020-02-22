@@ -198,9 +198,18 @@
     color: gray;
     vertical-align: middle;
     font-size: .7rem;
+    margin-bottom: 0.7rem;
 }
 
+.acc {
+    font-size: 1rem;
+    color: red;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-end;
 
+    margin-bottom: 0.5rem;
+}
 
 /*ForgetPassword*/
 .headText {
@@ -214,8 +223,18 @@
 }
 .box .btn-send {
     margin-top: 1rem;
+    border: 1px solid #DE3163;
     background-color: #DE3163;
     color: #fff;
+}
+
+.box .btn-email {
+    min-height: 2.5rem;
+    font-size: 1.2rem;
+    align-self: center;
+    margin : 3rem 0 ;
+    padding: 0.875rem 0;
+    width: 60%;
 }
 
 .box .btn-send:hover {
@@ -235,11 +254,17 @@
 }
 
 
-.pass {
+.pass , .RestPass {
     display: flex;
-    color: red;
     padding-right: 0.5rem;
     justify-content: flex-end;
+}
+
+.RestPass {
+    font-size: 1rem;
+}
+.pass {
+    color: red;
 }
 /******  Footer Style *****/
 
@@ -312,7 +337,30 @@
 
 @media (max-width: 576px) {
     .box {
-        width: 90%;
+        width: 95%;
     }
 }
 
+
+
+@media (max-width: 411px) {
+
+
+    .or {
+        text-align: center;
+    }
+
+    .or::before, .or::after {
+        width: 7rem;
+    }
+    .facebook, .google {
+        width: 90%;
+    }
+
+    .response {
+        width: 95% !important;
+        margin: auto !important;
+    }
+
+
+}
